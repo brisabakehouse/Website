@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brisa Bakehouse - Freshly Baked, Made to Order</title>
+    <meta name="description" content="Brisa Bakehouse - Home bakery specializing in artisan cakes, donuts, and premium pastries. Choose from Egg or Eggless options. Made to order with love.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* CSS Variables */
+:root {
+    /* Pastel Color Palette */
+    --primary-pink: #FFD4E5;
+    --primary-cream: #FFF8F0;
+    --primary-blue: #E3F2FD;
+    --accent-rose: #F8BBD0;
+    --accent-peach: #FFE0B2;
+    --accent-lavender: #E1BEE7;
+    
+    /* Text Colors */
+    --text-dark: #4A4A4A;
+    --text-medium: #7A7A7A;
+    --text-light: #A8A8A8;
+    
+    /* Background Colors */
+    --bg-light: #FFFBF7;
+    --bg-white: #FFFFFF;
+    --bg-overlay: rgba(255, 255, 255, 0.95);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(248, 187, 208, 0.15);
+    --shadow-md: 0 4px 20px rgba(248, 187, 208, 0.2);
+    --shadow-lg: 0 8px 40px rgba(248, 187, 208, 0.25);
+    
+    /* Typography */
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Quicksand', sans-serif;
+    
+    /* Spacing */
+    --container-width: 1200px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--primary-cream) 100%);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-overlay);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-wrapper {
+    flex-shrink: 0;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:active {
+    transform: scale(0.95);
+}
+
+.search-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 100%;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 0.6rem 2.5rem 0.6rem 1rem;
+    border: 2px solid var(--primary-pink);
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    background: var(--bg-white);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: var(--accent-rose);
+    box-shadow: 0 0 0 3px rgba(248, 187, 208, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-rose);
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-rose);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-rose);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-logo-wrapper {
+    margin-bottom: var(--spacing-md);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.hero-logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(var(--shadow-md));
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-lg);
+    font-style: italic;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-lavender) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Floating Decorations */
+.hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.float-element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.float-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--primary-pink) 0%, transparent 70%);
+    top: 10%;
+    left: 5%;
+    animation: floatRandom1 20s ease-in-out infinite;
+}
+
+.float-2 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
+    top: 60%;
+    right: 10%;
+    animation: floatRandom2 25s ease-in-out infinite;
+}
+
+.float-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--accent-peach) 0%, transparent 70%);
+    bottom: 15%;
+    left: 15%;
+    animation: floatRandom3 30s ease-in-out infinite;
+}
+
+@keyframes floatRandom1 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(50px, -30px); }
+    50% { transform: translate(-30px, 40px); }
+    75% { transform: translate(40px, 20px); }
+}
+
+@keyframes floatRandom2 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-40px, 30px); }
+    66% { transform: translate(30px, -40px); }
+}
+
+@keyframes floatRandom3 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(40px, 40px); }
+    66% { transform: translate(-50px, -30px); }
+}
+
+/* Menu Section */
+.menu-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* Category Filter */
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--primary-pink);
+    background: var(--bg-white);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--primary-pink);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-lavender) 100%);
+    color: white;
+    border-color: var(--accent-rose);
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.product-card {
+    background: var(--bg-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--primary-pink);
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.product-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.product-weight {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-bottom: 0.75rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-rose);
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: var(--spacing-lg);
+    font-size: 1.2rem;
+    color: var(--text-medium);
+}
+
+/* Testimonials Section */
+/* Testimonials Section - MOBILE FIRST */
+.testimonials-section {
+    padding: var(--spacing-lg) 0;
+    background: var(--bg-white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background: var(--bg-light);
+    padding: 1.25rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.testimonial-card:active {
+    transform: scale(0.98);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.testimonial-stars {
+    color: #FFD700;
+    font-size: 0.9rem;
+}
+
+.testimonial-review {
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.testimonial-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.testimonial-cta {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
+    border-radius: 15px;
+    margin-top: var(--spacing-md);
+}
+
+.testimonial-cta h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-cta p {
+    color: var(--text-medium);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.submit-review-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: white;
+    color: var(--accent-rose);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.submit-review-btn:active {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Contact Section */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--primary-cream) 0%, var(--primary-blue) 100%);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.contact-info h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.order-notice {
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: 15px;
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.order-notice svg {
+    flex-shrink: 0;
+    color: var(--accent-rose);
+}
+
+.order-notice h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.order-notice p {
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.instagram-btn {
+    background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.instagram-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.instagram-handle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.contact-visual {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.visual-card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.visual-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.visual-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.visual-card p {
+    color: var(--text-medium);
+}
+
+/* Footer */
+.footer {
+    background: var(--text-dark);
+    color: white;
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-logo img {
+    max-width: 150px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-logo p {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background: var(--accent-rose);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-links {
+        align-items: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .search-wrapper {
+        max-width: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.75rem var(--spacing-sm);
+    }
+    
+    .nav-logo {
+        height: 40px;
+    }
+    
+    .search-wrapper {
+        max-width: 200px;
+    }
+    
+    .search-wrapper input {
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .hero {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero-logo {
+        max-width: 200px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .contact-info h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Egg/Eggless Toggle */
+.egg-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.egg-toggle {
+    position: relative;
+    display: inline-flex;
+    background: white;
+    border-radius: 60px;
+    padding: 6px;
+    box-shadow: var(--shadow-md);
+    gap: 6px;
+}
+
+.toggle-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn.active {
+    color: white;
+}
+
+.toggle-btn.active .toggle-icon {
+    transform: scale(1.1);
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: calc(50% - 6px);
+    height: calc(100% - 12px);
+    background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-lavender) 100%);
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.egg-toggle[data-active="eggless"] .toggle-slider {
+    transform: translateX(100%);
+}
+
+/* Category Filter Buttons - MOBILE FIRST */
+.category-filter-wrapper {
+    margin: 1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.category-filters {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    min-width: min-content;
+}
+
+.category-filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-pink);
+    background: white;
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.category-filter-btn:active {
+    transform: scale(0.95);
+}
+
+.category-filter-btn.active {
+    background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-lavender) 100%);
+    color: white;
+    border-color: var(--accent-rose);
+    box-shadow: 0 3px 8px rgba(248, 187, 208, 0.3);
+}
+
+/* Scrollbar styling for category filters */
+.category-filter-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+
+.category-filter-wrapper::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 2px;
+}
+
+.category-filter-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 2px;
+}
+
+/* Menu Content */
+.menu-content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.menu-category {
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--primary-pink);
+}
+
+.category-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.category-weight {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+.category-note {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-peach);
+    color: var(--text-dark);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Subcategory Styles */
+.subcategory-section {
+    margin-top: var(--spacing-md);
+}
+
+.subcategory-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--accent-rose);
+    margin-bottom: var(--spacing-sm);
+    padding-left: var(--spacing-sm);
+    border-left: 4px solid var(--accent-rose);
+}
+
+/* Menu Items Grid - MOBILE FIRST */
+.menu-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+}
+
+.menu-item {
+    background: white;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.75rem;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.item-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #FFE8F0 0%, #E8E3FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    grid-row: 1 / 3;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Fallback for emoji */
+.item-image:not(:has(img))::before {
+    content: '🎂';
+    font-size: 2.8rem;
+}
+
+.item-info {
+    flex: 1;
+    min-width: 0;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.item-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.item-per-piece {
+    font-size: 0.75rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+.item-price-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: space-between;
+}
+
+/* Weight Selector - MOBILE OPTIMIZED */
+.weight-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--primary-pink);
+    border-radius: 25px;
+    padding: 0.3rem 0.6rem;
+}
+
+.weight-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: white;
+    color: var(--accent-rose);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.weight-btn:active {
+    background: var(--accent-rose);
+    color: white;
+    transform: scale(0.95);
+}
+
+.weight-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.weight-display {
+    min-width: 55px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+.weight-label {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--text-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.weight-value {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Item Price - MOBILE OPTIMIZED */
+.item-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-rose);
+    white-space: nowrap;
+}
+
+/* Eggless Only Badge */
+.eggless-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, #90EE90 0%, #32CD32 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    margin-left: 0.5rem;
+}
+
+/* Animation Delays for Staggered Effects */
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+
+.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+.menu-item:nth-child(1) { animation-delay: 0.05s; }
+.menu-item:nth-child(2) { animation-delay: 0.1s; }
+.menu-item:nth-child(3) { animation-delay: 0.15s; }
+.menu-item:nth-child(4) { animation-delay: 0.2s; }
+.menu-item:nth-child(5) { animation-delay: 0.25s; }
+.menu-item:nth-child(6) { animation-delay: 0.3s; }
+
+/* Responsive - MOBILE FIRST APPROACH */
+/* Base styles above are for mobile (default) */
+
+/* Small tablets and larger phones (576px+) */
+@media (min-width: 576px) {
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .item-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .item-name {
+        font-size: 1.05rem;
+    }
+    
+    .item-price {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablets (768px+) */
+@media (min-width: 768px) {
+    .toggle-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .toggle-icon {
+        font-size: 1.2rem;
+    }
+    
+    .menu-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .item-image {
+        width: 85px;
+        height: 85px;
+    }
+    
+    .item-name {
+        font-size: 1.1rem;
+    }
+    
+    .item-price {
+        font-size: 1.5rem;
+    }
+    
+    .weight-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .weight-display {
+        min-width: 65px;
+    }
+    
+    .category-title {
+        font-size: 2.5rem;
+    }
+    
+    /* Testimonials - Tablet */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .submit-review-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+    .menu-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .menu-item {
+        padding: 1.25rem;
+    }
+    
+    .item-image {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .item-name {
+        font-size: 1.15rem;
+    }
+    
+    .menu-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .weight-btn:hover {
+        background: var(--accent-rose);
+        color: white;
+        transform: scale(1.05);
+    }
+}
+
+/* Large desktop (1200px+) */
+@media (min-width: 1200px) {
+    .menu-items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Testimonials - 3 columns on large screens */
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+    </style>
+</head>
+<body>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Brisa Bakehouse" class="nav-logo">
+            </div>
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Order</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="logo.png" alt="Brisa Bakehouse" class="hero-logo">
+            </div>
+            <h1 class="hero-title">New Home Bakery</h1>
+            <p class="hero-subtitle">Freshly Baked, Made to Order</p>
+            <a href="https://instagram.com/brisa_bakehouse" target="_blank" class="cta-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Order on Instagram
+            </a>
+        </div>
+        <div class="hero-decoration">
+            <div class="float-element float-1"></div>
+            <div class="float-element float-2"></div>
+            <div class="float-element float-3"></div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Menu</h2>
+                <p class="section-subtitle">Artisan baked goods made fresh to order</p>
+            </div>
+
+            <!-- Egg/Eggless Toggle -->
+            <div class="egg-toggle-wrapper">
+                <div class="egg-toggle">
+                    <button class="toggle-btn active" data-type="egg">
+                        <span class="toggle-icon">🥚</span>
+                        <span class="toggle-text">Egg</span>
+                    </button>
+                    <button class="toggle-btn" data-type="eggless">
+                        <span class="toggle-icon">🌱</span>
+                        <span class="toggle-text">Eggless</span>
+                    </button>
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="category-filter-wrapper">
+                <div class="category-filters">
+                    <button class="category-filter-btn active" data-category="all">All</button>
+                    <button class="category-filter-btn" data-category="cakes">Cakes</button>
+                    <button class="category-filter-btn" data-category="premiumCakes">Premium</button>
+                    <button class="category-filter-btn" data-category="dreamCakes">Dream</button>
+                    <button class="category-filter-btn" data-category="bentoCakes">Bento</button>
+                    <button class="category-filter-btn" data-category="tresLeches">Tres Leches</button>
+                    <button class="category-filter-btn" data-category="bomboloni">Bomboloni</button>
+                    <button class="category-filter-btn" data-category="donuts">Donuts</button>
+                    <button class="category-filter-btn" data-category="cupcakes">Cupcakes</button>
+                </div>
+            </div>
+
+            <!-- Menu Content -->
+            <div id="menuContent" class="menu-content">
+                <!-- Categories will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real people</p>
+            </div>
+
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Testimonials will be loaded here -->
+            </div>
+
+            <div class="testimonial-cta">
+                <h3>Share Your Experience</h3>
+                <p>Tried our baked goods? We'd love to hear from you!</p>
+                <a href="https://forms.gle/9RiTQ1thgT8xqRP2A" target="_blank" class="submit-review-btn">
+                    Submit a Review
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Order Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Order?</h2>
+                    <div class="order-notice">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <div>
+                            <h4>Pre-Orders Only</h4>
+                            <p>All items are made to order. Please place orders at least <strong>2 days in advance</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-methods">
+                        <a href="https://instagram.com/brisa_bakehouse" target="_blank" class="contact-btn instagram-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            DM us on Instagram
+                        </a>
+                        <div class="instagram-handle">@brisa_bakehouse</div>
+                    </div>
+                </div>
+
+                <div class="contact-visual">
+                    <div class="visual-card">
+                        <div class="card-icon">🎂</div>
+                        <h4>Custom Orders</h4>
+                        <p>Personalized cakes for every occasion</p>
+                    </div>
+                    <div class="visual-card">
+                        <div class="card-icon">🍩</div>
+                        <h4>Fresh Daily</h4>
+                        <p>Baked with premium ingredients</p>
+                    </div>
+                    <div class="visual-card">
+                        <div class="card-icon">💝</div>
+                        <h4>Made with Love</h4>
+                        <p>Every item crafted with care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Brisa Bakehouse">
+                    <p>Freshly Baked, Made to Order</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://instagram.com/brisa_bakehouse" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Brisa Bakehouse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products-new.js"></script>
+    <script>
+// products.js - Complete Menu Data for Brisa Bakehouse
+// Updated with Egg/Eggless toggle system
+
+const menuData = {
+    // CAKES - 500g
+    cakes: {
+        category: "Cakes",
+        weight: "500g",
+        baseWeight: 500,
+        allowWeightChange: true,
+        minOrder: 1,
+        egg: [
+            { name: "Vanilla Cake", price: 400, image: "images/cakes/vanilla-cake.jpeg" },
+            { name: "Vanilla Choco Chips Cake", price: 430, image: "images/cakes/vanilla-choco-chips-cake.jpeg" },
+            { name: "Pineapple Cake", price: 430, image: "images/cakes/pineapple-cake.jpeg" },
+            { name: "Chocolate Cake", price: 450, image: "images/cakes/chocolate-cake.jpeg" },
+            { name: "Black Forest Cake", price: 450, image: "images/cakes/black-forest-cake.jpeg" },
+            { name: "White Forest Cake", price: 470, image: "images/cakes/white-forest-cake.jpeg" },
+            { name: "Butterscotch Cake", price: 470, image: "images/cakes/butterscotch-cake.jpeg" },
+            { name: "Red Velvet Cake", price: 500, image: "images/cakes/red-velvet-cake.jpeg" },
+            { name: "Vanilla Caramel Cake", price: 450, image: "images/cakes/vanilla-caramel-cake.jpeg" },
+            { name: "Chocolate Caramel Cake", price: 500, image: "images/cakes/chocolate-caramel-cake.jpeg" }
+        ],
+        eggless: [
+            { name: "Vanilla Cake", price: 430, image: "images/cakes/vanilla-cake.jpeg" },
+            { name: "Vanilla Choco Chips Cake", price: 460, image: "images/cakes/vanilla-choco-chips-cake.jpeg" },
+            { name: "Pineapple Cake", price: 460, image: "images/cakes/pineapple-cake.jpeg" },
+            { name: "Chocolate Cake", price: 480, image: "images/cakes/chocolate-cake.jpeg" },
+            { name: "Black Forest Cake", price: 480, image: "images/cakes/black-forest-cake.jpeg" },
+            { name: "White Forest Cake", price: 500, image: "images/cakes/white-forest-cake.jpeg" },
+            { name: "Butterscotch Cake", price: 470, image: "images/cakes/butterscotch-cake.jpeg" },
+            { name: "Red Velvet Cake", price: 530, image: "images/cakes/red-velvet-cake.jpeg" },
+            { name: "Vanilla Caramel Cake", price: 480, image: "images/cakes/vanilla-caramel-cake.jpeg" },
+            { name: "Chocolate Caramel Cake", price: 530, image: "images/cakes/chocolate-caramel-cake.jpeg" }
+        ]
+    },
+    
+    // PREMIUM CAKES - 500g
+    premiumCakes: {
+        category: "Premium Cakes",
+        weight: "500g",
+        baseWeight: 500,
+        allowWeightChange: true,
+        minOrder: 1,
+        egg: [
+            { name: "Milky Badam Cake", price: 550, image: "images/cakes/milky-badam-cake.jpeg" },
+            { name: "Chocolate Truffle Cake", price: 600, image: "images/cakes/chocolate-truffle-cake.jpeg" },
+            { name: "Vanilla Nutella Cake", price: 550, image: "images/cakes/vanilla-nutella-cake.jpeg" },
+            { name: "Chocolate Nutella Cake", price: 600, image: "images/cakes/chocolate-nutella-cake.jpeg" },
+            { name: "Rasmalai Cake", price: 600, image: "images/cakes/rasmalai-cake.jpeg" },
+            { name: "Lotus Biscoff Cake", price: 600, image: "images/cakes/lotus-biscoff-cake.jpeg" },
+            { name: "Chocolate Mocha Cake", price: 650, image: "images/cakes/chocolate-mocha-cake.jpeg" },
+            { name: "Ferrero Rocher Cake", price: 650, image: "images/cakes/ferrero-rocher-cake.jpeg" },
+            { name: "Chocolate Roasted Almond Cake", price: 680, image: "images/cakes/chocolate-roasted-almonds-cake.jpeg" },
+            { name: "White Chocolate Roasted Almond Cake", price: 700, image: "images/cakes/white-chocolate-roasted-almonds.jpeg" },
+            { name: "Chocolate Overloaded Cake", price: 600, image: "images/cakes/chocolate-overloaded-cake.jpeg" },
+            { name: "Chocolate Oreo Cake", price: 650, image: "images/cakes/chocolate-oreo-cake.jpeg" },
+            { name: "Choco Caramel Roasted Almond Cake", price: 730, image: "images/cakes/choco-caramel roasted-almonds-cake.jpeg" },
+            { name: "Nutella Hazelnut Cake", price: 730, image: "images/cakes/nutella-hazelnut-cake.jpeg" }
+        ],
+        eggless: [
+            { name: "Milky Badam Cake", price: 580, image: "images/cakes/milky-badam-cake.jpeg" },
+            { name: "Chocolate Truffle Cake", price: 630, image: "images/cakes/chocolate-truffle-cake.jpeg" },
+            { name: "Vanilla Nutella Cake", price: 580, image: "images/cakes/vanilla-nutella-cake.jpeg" },
+            { name: "Chocolate Nutella Cake", price: 630, image: "images/cakes/chocolate-nutella-cake.jpeg" },
+            { name: "Rasmalai Cake", price: 630, image: "images/cakes/rasmalai-cake.jpeg" },
+            { name: "Lotus Biscoff Cake", price: 630, image: "images/cakes/lotus-biscoff-cake.jpeg" },
+            { name: "Chocolate Mocha Cake", price: 680, image: "images/cakes/chocolate-mocha-cake.jpeg" },
+            { name: "Ferrero Rocher Cake", price: 680, image: "images/cakes/ferrero rocher cake.jpeg" },
+            { name: "Chocolate Roasted Almond Cake", price: 710, image: "images/cakes/chocolate-roasted-almonds-cake.jpeg" },
+            { name: "White Chocolate Roasted Almond Cake", price: 730, image: "images/cakes/white-chocolate-roasted-almonds.jpeg" },
+            { name: "Chocolate Overloaded Cake", price: 630, image: "images/cakes/chocolate-overloaded-cake.jpeg" },
+            { name: "Chocolate Oreo Cake", price: 680, image: "images/cakes/chocolate-oreo-cake.jpeg" },
+            { name: "Choco Caramel Roasted Almond Cake", price: 760, image: "images/cakes/choco-caramel roasted-almonds-cake.jpeg" },
+            { name: "Nutella Hazelnut Cake", price: 760, image: "images/cakes/chocolate-nutella-cake.jpeg" }
+        ]
+    },
+    
+    // DREAM CAKES - 500g
+    dreamCakes: {
+        category: "Dream Cakes",
+        weight: "500g",
+        baseWeight: 500,
+        allowWeightChange: true,
+        minOrder: 1,
+        egg: [
+            { name: "Classic Dream Cake", price: 600, image: "images/dream-cake/classic-dream-cake.jpeg" },
+            { name: "Caramel Dream Cake", price: 650, image: "images/dream-cake/caramel-dream-cake.jpeg" },
+            { name: "Butterscotch Dream Cake", price: 700, image: "images/dream-cake/butterscotch-dream-cake.jpeg" }
+        ],
+        eggless: [
+            { name: "Classic Dream Cake", price: 650, image: "images/dream-cake/classic-dream-cake.jpeg" },
+            { name: "Caramel Dream Cake", price: 680, image: "images/dream-cake/caramel-dream-cake.jpeg" },
+            { name: "Butterscotch Dream Cake", price: 730, image: "images/dream-cake/butterscotch-dream-cake.jpeg" }
+        ]
+    },
+    
+    // BENTO CAKES - 250g
+    bentoCakes: {
+        category: "Bento Cakes",
+        weight: "250g",
+        baseWeight: 250,
+        allowWeightChange: false,
+        minOrder: 1,
+        egg: [
+            { name: "Vanilla Bento Cake", price: 200, image: "images/bento-cakes/vanilla-bento-cake.jpeg" },
+            { name: "Vanilla Choco Chips Bento Cake", price: 210, image: "images/bento-cakes/vanilla-chocochips-bento-cake.jpeg" },
+            { name: "Pineapple Bento Cake", price: 220, image: "images/bento-cakes/pineapple-bento-cake.jpeg" },
+            { name: "Chocolate Bento Cake", price: 240, image: "images/bento-cakes/chocolate-bento-cake.jpeg" },
+            { name: "Butterscotch Bento Cake", price: 250, image: "images/bento-cakes/butterscotch-bento-cake.jpeg" },
+            { name: "Chocolate Truffle Bento Cake", price: 270, image: "images/bento-cakes/chocolate-truffle-bento-cake.jpeg" },
+            { name: "Chocolate Nutella Bento Cake", price: 290, image: "images/bento-cakes/nutella-bento-cake.jpeg" }
+        ],
+        eggless: [
+            { name: "Vanilla Bento Cake", price: 210, image: "images/bento-cakes/vanilla-bento-cake.jpeg" },
+            { name: "Vanilla Choco Chips Bento Cake", price: 220, image: "images/bento-cakes/vanilla-chocochips-bento-cake.jpeg" },
+            { name: "Pineapple Bento Cake", price: 230, image: "images/bento-cakes/pineapple-bento-cake.jpeg" },
+            { name: "Chocolate Bento Cake", price: 250, image: "images/bento-cakes/chocolate-bento-cake.jpeg" },
+            { name: "Butterscotch Bento Cake", price: 260, image: "images/bento-cakes/butterscotch-bento-cake.jpeg" },
+            { name: "Chocolate Truffle Bento Cake", price: 280, image: "images/bento-cakes/chocolate-truffle-bento-cake.jpeg" },
+            { name: "Chocolate Nutella Bento Cake", price: 300, image: "images/bento-cakes/nutella-bento-cake.jpeg" }
+        ]
+    },
+    
+    // TRES LECHES - Per Piece
+    tresLeches: {
+        category: "Tres Leches",
+        weight: "per piece",
+        baseWeight: 1,
+        allowWeightChange: false,
+        minOrder: 2,
+        perPiece: true,
+        egg: [
+            { name: "Classic Tres Leches", price: 70, image: "images/tres-leches/classic-tres-leches.jpeg" },
+            { name: "Rasmalai Tres Leches", price: 80, image: "images/tres-leches/rasmalai-tres-leches.jpeg" }
+        ],
+        eggless: [
+            { name: "Classic Tres Leches", price: 80, image: "images/tres-leches/classic-tres-leches.jpeg" },
+            { name: "Rasmalai Tres Leches", price: 90, image: "images/tres-leches/rasmalai-tres-leches.jpeg" }
+        ]
+    },
+    
+    // BOMBOLONI - Eggless Only (per piece, minimum 2)
+    bomboloni: {
+        category: "Bomboloni",
+        weight: "per piece",
+        baseWeight: 1,
+        allowWeightChange: false,
+        minOrder: 2,
+        egglessOnly: true,
+        perPiece: true,
+        subcategories: {
+            mini: {
+                name: "Mini",
+                items: [
+                    { name: "Mini Milk Chocolate Bomboloni", price: 80, image: "images/mini-bomboloni/mini-milk-chocolate-bomboloni.jpeg" },
+                    { name: "Mini Dark Chocolate Bomboloni", price: 80, image: "images/mini-bomboloni/mini-dark-chocolate-bomboloni.jpeg" },
+                    { name: "Mini White Chocolate Mousse Bomboloni", price: 85, image: "images/mini-bomboloni/mini-white-chocolate-mousse-bomboloni.jpeg" },
+                    { name: "Mini Chocolate Mousse Bomboloni", price: 70, image: "images/mini-bomboloni/mini-chocolate-mousse-bomboloni.jpeg" },
+                    { name: "Mini Nutella Bomboloni", price: 90, image: "images/mini-bomboloni/mini-nutella-bomboloni.jpeg" }
+                ]
+            },
+            regular: {
+                name: "Regular",
+                items: [
+                    { name: "Regular Milk Chocolate Bomboloni", price: 120, image: "images/regular-size-bomboloni/regular-milk-chocolate-bomboloni.jpeg" },
+                    { name: "Regular Dark Chocolate Bomboloni", price: 120, image: "images/regular-size-bomboloni/regular-dark-chocolate-bomboloni.jpeg" },
+                    { name: "Regular White Chocolate Mousse Bomboloni", price: 120, image: "images/regular-size-bomboloni/regular-white-chocolate-mousse-bomboloni.jpeg" },
+                    { name: "Regular Chocolate Mousse Bomboloni", price: 110, image: "images/regular-size-bomboloni/regular-chocolate-mousse-bomboloni.jpeg" },
+                    { name: "Regular Nutella Bomboloni", price: 130, image: "images/regular-size-bomboloni/regular-nutella-bomboloni.jpeg" }
+                ]
+            }
+        }
+    },
+    
+    // DONUTS - Eggless Only (per piece, minimum 2)
+    donuts: {
+        category: "Donuts",
+        weight: "per piece",
+        baseWeight: 1,
+        allowWeightChange: false,
+        minOrder: 2,
+        egglessOnly: true,
+        perPiece: true,
+        items: [
+            { name: "Milk Chocolate Donut", price: 80, image: "images/donuts/milk-chocolate-donut.jpeg" },
+            { name: "White Chocolate Donut", price: 85, image: "images/donuts/white-chocolate-donut.jpeg" },
+            { name: "Dark Chocolate Donut", price: 80, image: "images/donuts/dark-chocolate-donut.jpeg" },
+            { name: "KitKat Donut", price: 85, image: "images/donuts/kitkat-donut.jpeg" },
+            { name: "Nutella Donut", price: 95, image: "images/donuts/nutella-donut.jpeg" },
+            { name: "Roasted Almond Chocolate Donut", price: 90, image: "images/donuts/roasted-almond-chocolate-donut.jpeg" }
+        ]
+    },
+    
+    // CUPCAKES (per piece, minimum order 4)
+    cupcakes: {
+        category: "Cupcakes",
+        weight: "per piece",
+        baseWeight: 1,
+        allowWeightChange: false,
+        minOrder: 4,
+        bothTypes: true,
+        perPiece: true,
+        items: [
+            { name: "Vanilla Cupcake", price: 15, image: "images/cupcakes/vanilla-cupcake.jpeg" },
+            { name: "Chocolate Cupcake", price: 18, image: "images/cupcakes/chocolate-cupcake.jpeg" },
+            { name: "Vanilla Cupcake with Whipped Cream Frosting", price: 25, image: "images/cupcakes/vanilla-cupcake-with-whipped-cream-frosting.jpeg" },
+            { name: "Chocolate Cupcake with Whipped Cream Frosting", price: 25, image: "images/cupcakes/chocolate-cupcake-with-whipped-cream-frosting.jpeg" },
+            { name: "Vanilla Cupcake with Chocolate Ganache Frosting", price: 35, image: "images/cupcakes/vanilla-cupcake-with-chocolate-ganache-frosting.jpeg" },
+            { name: "Chocolate Cupcake with Chocolate Ganache Frosting", price: 35, image: "images/cupcakes/chocolate-cupcake-with-chocolate-ganache-frosting.jpeg" },
+            { name: "Vanilla Cupcake with Filling & Whipped Cream Frosting", price: 35, image: "images/cupcakes/chocolate-cupcake-with-filling-and-whipped-cream-frosting.jpeg" },
+            { name: "Chocolate Cupcake with Filling & Whipped Cream Frosting", price: 35, image: "images/cupcakes/vanilla-cupcake-with-filling-and-whipped-cream-frosting.jpeg" }
+        ]
+    }
+};
+
+// ==================== GOOGLE SHEETS CONFIGURATION ====================
+// To enable automatic review loading from Google Sheets:
+// 1. Publish your Google Sheet as CSV (File → Share → Publish to web → CSV)
+// 2. Replace 'YOUR_GOOGLE_SHEET_ID' with your actual Sheet ID
+//    OR paste the full CSV URL in csvUrl field
+
+const GOOGLE_SHEET_CONFIG = {
+    enabled: true,  // Set to true after configuring
+    sheetId: '2PACX-1vRstwqOTNXqdxKLkv689NQtRmCZjp2IHBwIE0dDOWWocb1OkYvqkwWuITU4i3e62xrNXAm4JAD_q9Ya',
+    csvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRstwqOTNXqdxKLkv689NQtRmCZjp2IHBwIE0dDOWWocb1OkYvqkwWuITU4i3e62xrNXAm4JAD_q9Ya/pub?gid=1035998843&single=true&output=csv',  // OR paste full CSV URL here
+    daysToShow: 30,
+    minimumReviews: 3,
+    cacheTime: 5 * 60 * 1000
+};
+
+// Load reviews from Google Sheets
+async function loadReviewsFromSheets() {
+    if (!GOOGLE_SHEET_CONFIG.enabled) {
+        return null;
+    }
+    
+    try {
+        let csvUrl = GOOGLE_SHEET_CONFIG.csvUrl;
+        if (!csvUrl && GOOGLE_SHEET_CONFIG.sheetId && GOOGLE_SHEET_CONFIG.sheetId !== 'YOUR_GOOGLE_SHEET_ID') {
+            csvUrl = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_CONFIG.sheetId}/export?format=csv`;
+        }
+        
+        if (!csvUrl) return null;
+        
+        const response = await fetch(csvUrl);
+        if (!response.ok) throw new Error('Failed to fetch');
+        
+        const csvText = await response.text();
+        const lines = csvText.split('\n').filter(line => line.trim());
+        const reviews = [];
+        
+        for (let i = 1; i < lines.length; i++) {
+            const fields = parseCSVLine(lines[i]);
+            if (fields.length >= 4) {
+                const timestamp = new Date(fields[0]);
+                reviews.push({
+                    name: fields[1].trim(),
+                    rating: Math.min(5, Math.max(1, parseInt(fields[2]) || 5)),
+                    review: fields[3].trim(),
+                    date: timestamp.toISOString().split('T')[0],
+                    timestamp: timestamp.getTime()
+                });
+            }
+        }
+        
+        reviews.sort((a, b) => b.timestamp - a.timestamp);
+        
+        const now = Date.now();
+        const cutoff = now - (GOOGLE_SHEET_CONFIG.daysToShow * 24 * 60 * 60 * 1000);
+        const recent = reviews.filter(r => r.timestamp >= cutoff);
+        
+        if (recent.length >= GOOGLE_SHEET_CONFIG.minimumReviews) {
+            return recent;
+        }
+        return reviews.slice(0, GOOGLE_SHEET_CONFIG.minimumReviews);
+        
+    } catch (error) {
+        console.error('Error loading Google Sheets reviews:', error);
+        return null;
+    }
+}
+
+function parseCSVLine(line) {
+    const fields = [];
+    let field = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            fields.push(field);
+            field = '';
+        } else {
+            field += char;
+        }
+    }
+    fields.push(field);
+    return fields;
+}
+
+// Sample testimonials (fallback if Google Sheets not configured or fails)
+const testimonials = [
+    {
+        name: "Priya Sharma",
+        rating: 5,
+        review: "Absolutely loved the Black Forest cake! The texture was perfect and not too sweet. Brisa's attention to detail is amazing. Will definitely order again!",
+        date: "2026-01-20"
+    },
+    {
+        name: "Rahul K",
+        rating: 5,
+        review: "The bomboloni donuts are heavenly! Fresh, fluffy, and the chocolate filling is divine. Best home bakery in the area.",
+        date: "2026-01-18"
+    },
+    {
+        name: "Anjali Reddy",
+        rating: 5,
+        review: "Ordered a custom cake for my daughter's birthday. Everyone was impressed! The cake was moist, delicious, and beautifully decorated. Thank you Brisa!",
+        date: "2026-01-15"
+    }
+];
+
+// Export for use in main script
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { menuData, testimonials };
+}
+    </script>
+    <script>
+// Main JavaScript functionality for Brisa Bakehouse - Enhanced Menu System
+
+// State management
+let currentEggType = 'egg';
+let currentCategory = 'all';
+let searchQuery = '';
+let weightMultipliers = {}; // Track weight multipliers for each item
+
+// DOM Elements
+const searchInput = document.getElementById('searchInput');
+const menuContent = document.getElementById('menuContent');
+const testimonialsGrid = document.getElementById('testimonialsGrid');
+const eggToggle = document.querySelector('.egg-toggle');
+const toggleButtons = document.querySelectorAll('.toggle-btn');
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeEggToggle();
+    initializeCategoryFilters();
+    loadMenu();
+    loadTestimonials();
+    initializeSearch();
+    initializeMobileMenu();
+    initializeSmoothScroll();
+});
+
+// Initialize Egg/Eggless Toggle
+function initializeEggToggle() {
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update current type
+            currentEggType = button.dataset.type;
+            
+            // Update slider position
+            eggToggle.setAttribute('data-active', currentEggType);
+            
+            // Reload menu
+            currentCategory = 'all'; // Reset to all when switching egg/eggless
+            resetCategoryFilter();
+            loadMenu();
+        });
+    });
+}
+
+// Initialize Category Filter Buttons
+function initializeCategoryFilters() {
+    const categoryFilterButtons = document.querySelectorAll('.category-filter-btn');
+    
+    categoryFilterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state
+            categoryFilterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update current category
+            currentCategory = button.dataset.category;
+            
+            // Filter visible categories
+            filterByCategory();
+        });
+    });
+}
+
+// Reset category filter to "All"
+function resetCategoryFilter() {
+    const categoryFilterButtons = document.querySelectorAll('.category-filter-btn');
+    categoryFilterButtons.forEach(btn => btn.classList.remove('active'));
+    const allButton = document.querySelector('.category-filter-btn[data-category="all"]');
+    if (allButton) {
+        allButton.classList.add('active');
+    }
+}
+
+// Filter categories based on selected filter
+function filterByCategory() {
+    const categories = document.querySelectorAll('.menu-category');
+    
+    categories.forEach(category => {
+        const categoryKey = category.dataset.categoryKey;
+        
+        if (currentCategory === 'all') {
+            category.style.display = '';
+        } else {
+            if (categoryKey === currentCategory) {
+                category.style.display = '';
+            } else {
+                category.style.display = 'none';
+            }
+        }
+    });
+}
+
+// Load and render menu based on egg type
+function loadMenu() {
+    if (typeof menuData === 'undefined') {
+        console.error('Menu data not loaded');
+        return;
+    }
+    
+    menuContent.innerHTML = '';
+    
+    // Iterate through all menu categories
+    Object.keys(menuData).forEach(categoryKey => {
+        const category = menuData[categoryKey];
+        
+        // Handle eggless-only items
+        if (category.egglessOnly && currentEggType === 'egg') {
+            return; // Skip eggless-only items when egg is selected
+        }
+        
+        // Handle items that are same for both
+        if (category.bothTypes) {
+            renderCategory(category, categoryKey);
+            return;
+        }
+        
+        // Check if category has subcategories (like Bomboloni)
+        if (category.subcategories) {
+            renderCategoryWithSubcategories(category, categoryKey);
+        } else if (category.items) {
+            // Eggless-only items with simple items array
+            renderCategory(category, categoryKey);
+        } else {
+            // Regular egg/eggless categories
+            const items = category[currentEggType];
+            if (items && items.length > 0) {
+                renderCategory(category, categoryKey, items);
+            }
+        }
+    });
+}
+
+// Render a category
+function renderCategory(category, categoryKey, items = null) {
+    const categorySection = document.createElement('div');
+    categorySection.className = 'menu-category';
+    categorySection.dataset.categoryKey = categoryKey;
+    
+    // Category header
+    const header = document.createElement('div');
+    header.className = 'category-header';
+    
+    const title = document.createElement('h3');
+    title.className = 'category-title';
+    title.textContent = category.category;
+    header.appendChild(title);
+    
+    const weight = document.createElement('p');
+    weight.className = 'category-weight';
+    weight.textContent = `${category.weight}`;
+    header.appendChild(weight);
+    
+    // Add eggless badge if eggless-only
+    if (category.egglessOnly) {
+        const badge = document.createElement('span');
+        badge.className = 'eggless-badge';
+        badge.textContent = 'Eggless Only';
+        header.appendChild(badge);
+    }
+    
+    // Add minimum order note if applicable
+    if (category.minOrder > 1) {
+        const note = document.createElement('span');
+        note.className = 'category-note';
+        note.textContent = `Minimum order: ${category.minOrder} pieces`;
+        header.appendChild(note);
+    }
+    
+    categorySection.appendChild(header);
+    
+    // Menu items
+    const itemsContainer = document.createElement('div');
+    itemsContainer.className = 'menu-items';
+    
+    const itemsToRender = items || category.items;
+    
+    itemsToRender.forEach((item, index) => {
+        const itemElement = createMenuItem(item, category, categoryKey, index);
+        itemsContainer.appendChild(itemElement);
+    });
+    
+    categorySection.appendChild(itemsContainer);
+    menuContent.appendChild(categorySection);
+}
+
+// Render category with subcategories (like Bomboloni)
+function renderCategoryWithSubcategories(category, categoryKey) {
+    const categorySection = document.createElement('div');
+    categorySection.className = 'menu-category';
+    categorySection.dataset.categoryKey = categoryKey;
+    
+    // Category header
+    const header = document.createElement('div');
+    header.className = 'category-header';
+    
+    const title = document.createElement('h3');
+    title.className = 'category-title';
+    title.textContent = category.category;
+    header.appendChild(title);
+    
+    const weight = document.createElement('p');
+    weight.className = 'category-weight';
+    weight.textContent = `${category.weight}`;
+    header.appendChild(weight);
+    
+    if (category.egglessOnly) {
+        const badge = document.createElement('span');
+        badge.className = 'eggless-badge';
+        badge.textContent = 'Eggless Only';
+        header.appendChild(badge);
+    }
+    
+    if (category.minOrder > 1) {
+        const note = document.createElement('span');
+        note.className = 'category-note';
+        note.textContent = `Minimum order: ${category.minOrder} pieces`;
+        header.appendChild(note);
+    }
+    
+    categorySection.appendChild(header);
+    
+    // Render each subcategory
+    Object.keys(category.subcategories).forEach(subKey => {
+        const subcategory = category.subcategories[subKey];
+        
+        const subSection = document.createElement('div');
+        subSection.className = 'subcategory-section';
+        
+        const subTitle = document.createElement('h4');
+        subTitle.className = 'subcategory-title';
+        subTitle.textContent = subcategory.name;
+        subSection.appendChild(subTitle);
+        
+        const itemsContainer = document.createElement('div');
+        itemsContainer.className = 'menu-items';
+        
+        subcategory.items.forEach((item, index) => {
+            const itemElement = createMenuItem(item, category, `${categoryKey}-${subKey}`, index);
+            itemsContainer.appendChild(itemElement);
+        });
+        
+        subSection.appendChild(itemsContainer);
+        categorySection.appendChild(subSection);
+    });
+    
+    menuContent.appendChild(categorySection);
+}
+
+// Create individual menu item
+function createMenuItem(item, category, categoryKey, index) {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'menu-item';
+    itemDiv.style.animationDelay = `${index * 0.05}s`;
+    
+    const itemKey = `${categoryKey}-${item.name}`;
+    
+    // Initialize weight multiplier if not exists
+    if (!weightMultipliers[itemKey]) {
+        weightMultipliers[itemKey] = 1;
+    }
+    
+    // Item image
+    const imageDiv = document.createElement('div');
+    imageDiv.className = 'item-image';
+    
+    if (item.image) {
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.name;
+        // Fallback to placeholder if image doesn't load
+        img.onerror = function() {
+            this.style.display = 'none';
+            imageDiv.style.fontSize = '3.5rem';
+            imageDiv.textContent = '🎂';
+        };
+        imageDiv.appendChild(img);
+    } else {
+        imageDiv.style.fontSize = '3.5rem';
+        imageDiv.textContent = '🎂';
+    }
+    
+    itemDiv.appendChild(imageDiv);
+    
+    // Item info
+    const itemInfo = document.createElement('div');
+    itemInfo.className = 'item-info';
+    
+    const itemName = document.createElement('h4');
+    itemName.className = 'item-name';
+    itemName.textContent = item.name;
+    itemInfo.appendChild(itemName);
+    
+    // Add "per piece" text if applicable
+    if (category.perPiece) {
+        const perPiece = document.createElement('p');
+        perPiece.className = 'item-per-piece';
+        perPiece.textContent = 'per piece';
+        itemInfo.appendChild(perPiece);
+    }
+    
+    itemDiv.appendChild(itemInfo);
+    
+    // Price section
+    const priceSection = document.createElement('div');
+    priceSection.className = 'item-price-section';
+    
+    // Weight selector (only for items that allow weight change)
+    if (category.allowWeightChange) {
+        const weightSelector = createWeightSelector(item, category, itemKey);
+        priceSection.appendChild(weightSelector);
+    }
+    
+    // Price
+    const price = document.createElement('div');
+    price.className = 'item-price';
+    const multiplier = weightMultipliers[itemKey];
+    const finalPrice = item.price * multiplier;
+    price.textContent = `₹${finalPrice}`;
+    price.id = `price-${itemKey}`;
+    priceSection.appendChild(price);
+    
+    itemDiv.appendChild(priceSection);
+    
+    return itemDiv;
+}
+
+// Create weight selector with +/- buttons
+function createWeightSelector(item, category, itemKey) {
+    const selector = document.createElement('div');
+    selector.className = 'weight-selector';
+    
+    // Minus button
+    const minusBtn = document.createElement('button');
+    minusBtn.className = 'weight-btn';
+    minusBtn.innerHTML = '−';
+    minusBtn.onclick = () => changeWeight(itemKey, item.price, category.baseWeight, -1);
+    
+    // Weight display
+    const display = document.createElement('div');
+    display.className = 'weight-display';
+    display.id = `weight-${itemKey}`;
+    
+    const label = document.createElement('span');
+    label.className = 'weight-label';
+    label.textContent = 'Weight';
+    
+    const value = document.createElement('span');
+    value.className = 'weight-value';
+    value.textContent = `${category.baseWeight}g`;
+    
+    display.appendChild(label);
+    display.appendChild(value);
+    
+    // Plus button
+    const plusBtn = document.createElement('button');
+    plusBtn.className = 'weight-btn';
+    plusBtn.innerHTML = '+';
+    plusBtn.onclick = () => changeWeight(itemKey, item.price, category.baseWeight, 1);
+    
+    selector.appendChild(minusBtn);
+    selector.appendChild(display);
+    selector.appendChild(plusBtn);
+    
+    return selector;
+}
+
+// Change weight multiplier (only 500g and 1kg = 1x and 2x)
+function changeWeight(itemKey, basePrice, baseWeight, direction) {
+    // Get current multiplier
+    let multiplier = weightMultipliers[itemKey] || 1;
+    
+    // Update multiplier (only 1x for 500g or 2x for 1kg)
+    multiplier += direction;
+    
+    // Clamp between 1 and 2 (500g and 1kg only)
+    multiplier = Math.max(1, Math.min(2, multiplier));
+    
+    // Update stored multiplier
+    weightMultipliers[itemKey] = multiplier;
+    
+    // Update display
+    const weightDisplay = document.getElementById(`weight-${itemKey}`);
+    const priceDisplay = document.getElementById(`price-${itemKey}`);
+    
+    if (weightDisplay) {
+        const weightValue = weightDisplay.querySelector('.weight-value');
+        const newWeight = baseWeight * multiplier;
+        
+        if (newWeight >= 1000) {
+            weightValue.textContent = `${newWeight / 1000}kg`;
+        } else {
+            weightValue.textContent = `${newWeight}g`;
+        }
+    }
+    
+    if (priceDisplay) {
+        const newPrice = basePrice * multiplier;
+        priceDisplay.textContent = `₹${newPrice}`;
+    }
+}
+
+// Load testimonials
+async function loadTestimonials() {
+    // Try loading from Google Sheets only if enabled
+    if (GOOGLE_SHEET_CONFIG.enabled) {
+        const sheetReviews = await loadReviewsFromSheets();
+        
+        if (sheetReviews && sheetReviews.length > 0) {
+            testimonials = sheetReviews;
+            console.log(`Loaded ${testimonials.length} reviews from Google Sheets`);
+        }
+    }
+    
+    if (typeof testimonials === 'undefined' || testimonials.length === 0) {
+        console.log('Using fallback testimonials');
+        return;
+    }
+    
+    testimonialsGrid.innerHTML = '';
+    
+    testimonials.forEach((testimonial, index) => {
+        const card = createTestimonialCard(testimonial, index);
+        testimonialsGrid.appendChild(card);
+    });
+}
+
+// Create testimonial card HTML
+function createTestimonialCard(testimonial, index) {
+    const card = document.createElement('div');
+    card.className = 'testimonial-card';
+    card.style.animationDelay = `${index * 0.1}s`;
+    
+    // Generate star rating
+    const stars = '★'.repeat(testimonial.rating) + '☆'.repeat(5 - testimonial.rating);
+    
+    // Format date
+    const date = new Date(testimonial.date);
+    const formattedDate = date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    
+    card.innerHTML = `
+        <div class="testimonial-header">
+            <span class="testimonial-name">${testimonial.name}</span>
+            <span class="testimonial-stars">${stars}</span>
+        </div>
+        <p class="testimonial-review">${testimonial.review}</p>
+        <p class="testimonial-date">${formattedDate}</p>
+    `;
+    
+    return card;
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        filterMenu();
+    });
+    
+    // Clear search on Escape key
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            searchInput.value = '';
+            searchQuery = '';
+            filterMenu();
+        }
+    });
+}
+
+// Filter menu based on search
+function filterMenu() {
+    if (!searchQuery) {
+        // Show all items
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.style.display = '';
+        });
+        document.querySelectorAll('.menu-category').forEach(cat => {
+            cat.style.display = '';
+        });
+        return;
+    }
+    
+    // Filter items
+    document.querySelectorAll('.menu-item').forEach(item => {
+        const nameElement = item.querySelector('.item-name');
+        if (nameElement) {
+            const name = nameElement.textContent.toLowerCase();
+            if (name.includes(searchQuery)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    });
+    
+    // Hide empty categories
+    document.querySelectorAll('.menu-category').forEach(category => {
+        const items = category.querySelectorAll('.menu-item');
+        const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+        
+        if (visibleItems.length === 0) {
+            category.style.display = 'none';
+        } else {
+            category.style.display = '';
+        }
+    });
+}
+
+// Initialize mobile menu
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (!menuToggle || !navLinks) return;
+    
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+}
+
+// Initialize smooth scroll
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Add scroll-based navbar background
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+        navbar.style.background = 'var(--bg-overlay)';
+    }
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all sections for animation
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+    </script>
+</body>
+</html>
